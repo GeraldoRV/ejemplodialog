@@ -1,6 +1,9 @@
 package gui;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +35,12 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         menuEdit = new javax.swing.JMenu();
         dialogMenu = new javax.swing.JMenu();
         cuadroMenuItem = new javax.swing.JMenuItem();
@@ -49,6 +58,25 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         menuFile.add(openMenuItem);
+        menuFile.add(jSeparator1);
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenu1.add(jMenuItem2);
+
+        menuFile.add(jMenu1);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        menuFile.add(jRadioButtonMenuItem1);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+        menuFile.add(jCheckBoxMenuItem1);
 
         jMenuBar1.add(menuFile);
 
@@ -93,14 +121,22 @@ public class MainWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        System.out.println("Boton abrir");
+        JFileChooser fc = new JFileChooser(".");
+        FileFilter filtro = new FileNameExtensionFilter("Ficheros xml", "xml");
+        
+        fc.addChoosableFileFilter(filtro);
+        int res = fc.showSaveDialog(null);
+
+        if (res == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Fichero" + fc.getSelectedFile());
+        }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void cuadroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuadroMenuItemActionPerformed
@@ -110,15 +146,16 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void cuadro2MenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuadro2MenuItemActionPerformed
         int res = JOptionPane.showConfirmDialog(rootPane, "¿estas seguro?", "Salir", JOptionPane.YES_NO_OPTION);
-        
+
         if (res == JOptionPane.YES_OPTION) {
             System.out.println("terminar la opcion");
         }
-        
+
     }//GEN-LAST:event_cuadro2MenuItemActionPerformed
 
     private void cuadro3MenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuadro3MenuItemActionPerformed
-        String res = (String) JOptionPane.showInputDialog(rootPane, "Intrdoucir nombre dle dragon", "Nombre dragon0",JOptionPane.PLAIN_MESSAGE,null,null,"Marc");
+        Object[] option = {"Marc", "Ryu", "wahr"};
+        String res = (String) JOptionPane.showInputDialog(rootPane, "Intrdoucir nombre dle dragon", "Nombre dragon0", JOptionPane.PLAIN_MESSAGE, null, option, "Marc");
     }//GEN-LAST:event_cuadro3MenuItemActionPerformed
 
     /**
@@ -161,7 +198,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem cuadro3MenuItem;
     private javax.swing.JMenuItem cuadroMenuItem;
     private javax.swing.JMenu dialogMenu;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem openMenuItem;
